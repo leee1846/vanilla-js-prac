@@ -10,3 +10,20 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+
+#container {
+  position: absolute;
+  top: -100vh;
+  background-color: dodgerblue;
+  transition: 1s;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container.active {
+  top: 50%;
+  transform: translateY(-50%);
+}
