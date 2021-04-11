@@ -10,3 +10,29 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(100, 100, 100, 0.644);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.modal {
+  background-color: white;
+  padding: 30px;
+  border-radius: 5px;
+  position: relative;
+}
+
+button.close {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
