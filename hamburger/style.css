@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+button {
+  background-color: dodgerblue;
+  border: none;
+  color: white;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 0.3rem 0.7rem;
+  font-size: 30px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: skyblue;
+  height: 100vh;
+  transform: translateX(100%);
+}
+
+.active {
+  transform: translateX(0);
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  padding: 1.5rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
