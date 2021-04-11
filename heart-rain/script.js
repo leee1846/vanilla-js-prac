@@ -6,6 +6,10 @@ const createHeart = () => {
   heart.style.left = Math.ceil(Math.random() * 100) + "vh";
 
   document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
 };
 setInterval(() => {
   createHeart();
