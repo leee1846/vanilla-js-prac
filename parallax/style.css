@@ -3,3 +3,44 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+section {
+  position: relative;
+  width: 100vw;
+  height: 200vh;
+}
+
+section img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.bg {
+  z-index: 1;
+}
+.moon {
+  top: 10%;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  z-index: 10;
+}
+.mountain {
+  z-index: 100;
+}
+.road {
+  z-index: 1000;
+}
+h2 {
+  position: absolute;
+  bottom: 40%;
+  color: white;
+  z-index: 10000000;
+  text-align: center;
+  width: 100%;
+  font-size: 100px;
+}
