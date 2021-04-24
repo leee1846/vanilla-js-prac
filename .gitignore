@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+./image-slider/node_modules
+./image-slider/.pnp
+./image-slider.pnp.js
+
+# testing
+./image-slider/coverage
+
+# production
+./image-slider/build
+
+# misc
+./image-slider.DS_Store
+./image-slider.env.local
+./image-slider.env.development.local
+./image-slider.env.test.local
+./image-slider.env.production.local
+
+./image-slidernpm-debug.log*
+./image-slideryarn-debug.log*
+./image-slideryarn-error.log*
