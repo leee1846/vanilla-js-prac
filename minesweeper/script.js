@@ -150,7 +150,18 @@ const listMinesLeft = () => {
   minesLeftText.textContent = number_Of_Mines - markedTilesCount;
 };
 
-const checkWin = (board) => {};
+const checkWin = (board) => {
+  return board.every((row) => {
+    return row.every((tile) => {
+      return (
+        tile.status === tile_dataStatus.number ||
+        (tile.mine &&
+          (tile.status === tile_dataStatus.hidden ||
+            tile.status === tile_dataStatus.marked))
+      );
+    });
+  });
+};
 
 const checkLose = (board) => {
   return board.some((row) => {
