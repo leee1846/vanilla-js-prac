@@ -68,6 +68,7 @@ const createBoard = (boardSize, numberOfMines) => {
 //minesweeper ui화면에 구현
 const board = createBoard(board_Size, number_Of_Mines);
 const boardElement = document.querySelector(".board");
+const minesLeftText = document.querySelector("[mine-count]");
 boardElement.style.setProperty("--size", board_Size);
 
 board.forEach((row) => {
@@ -75,4 +76,6 @@ board.forEach((row) => {
     boardElement.append(tile.element);
   });
 });
-console.log(board);
+
+minesLeftText.textContent = number_Of_Mines;
+console.log(minesLeftText);
