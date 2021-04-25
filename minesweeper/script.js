@@ -80,6 +80,19 @@ const markTile = (tile) => {
   }
 };
 
+const revealTile = (tile) => {
+  if (tile.status !== tile_dataStatus.hidden) {
+    return;
+  }
+
+  if (tile.mine) {
+    tile.status = tile_dataStatus.mine;
+    return;
+  }
+
+  tile.status = tile_dataStatus.number;
+};
+
 const board = createBoard(board_Size, number_Of_Mines);
 const boardElement = document.querySelector(".board");
 const minesLeftText = document.querySelector("[mine-count]");
@@ -92,7 +105,7 @@ board.forEach((row) => {
 
     //클릭이벤트 적용
     tile.element.addEventListener("click", () => {
-      console.log(1);
+      revealTile(tile);
     });
     tile.element.addEventListener("contextmenu", (e) => {
       e.preventDefault();
