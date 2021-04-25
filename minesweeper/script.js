@@ -8,16 +8,16 @@ const tile_dataStatus = {
 };
 
 //0부터 가로 갯수보다 적은 숫자만큼의 랜덤숫자만드는 함수
-function randomNumber(size) {
+const randomNumber = (size) => {
   return Math.floor(Math.random() * size);
-}
+};
 
-function positionMatch(a, b) {
+const positionMatch = (a, b) => {
   return a.x === b.x && a.y === b.y;
-}
+};
 
 //중복되지 않는 랜덤으로 x,y값 array만드는 함수
-function getMinePositions(boardSize, numberOfMines) {
+const getMinePositions = (boardSize, numberOfMines) => {
   const positions = [];
 
   while (positions.length < numberOfMines) {
@@ -32,7 +32,7 @@ function getMinePositions(boardSize, numberOfMines) {
   }
 
   return positions;
-}
+};
 
 const createBoard = (boardSize, numberOfMines) => {
   const board = [];
@@ -65,17 +65,41 @@ const createBoard = (boardSize, numberOfMines) => {
   return board;
 };
 
-//minesweeper ui화면에 구현
+const markTile = (tile) => {
+  if (
+    tile.status !== tile_dataStatus.hidden &&
+    tile.status !== tile_dataStatus.marked
+  ) {
+    return;
+  }
+
+  if (tile.status === tile_dataStatus.marked) {
+    tile.status = tile_dataStatus.hidden;
+  } else {
+    tile.status = tile_dataStatus.marked;
+  }
+};
+
 const board = createBoard(board_Size, number_Of_Mines);
 const boardElement = document.querySelector(".board");
 const minesLeftText = document.querySelector("[mine-count]");
 boardElement.style.setProperty("--size", board_Size);
 
+//minesweeper ui화면에 구현
 board.forEach((row) => {
   row.forEach((tile) => {
     boardElement.append(tile.element);
+
+    //클릭이벤트 적용
+    tile.element.addEventListener("click", () => {
+      console.log(1);
+    });
+    tile.element.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+      markTile(tile);
+    });
   });
 });
 
+//상단 minesLeft값 적용
 minesLeftText.textContent = number_Of_Mines;
-console.log(minesLeftText);
