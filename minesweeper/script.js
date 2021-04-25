@@ -1,5 +1,5 @@
 const board_Size = 10;
-const number_Of_Mines = 2;
+const number_Of_Mines = 10;
 const tile_dataStatus = {
   hidden: "hidden",
   mine: "mine",
@@ -80,7 +80,7 @@ const markTile = (tile) => {
   }
 };
 
-const revealTile = (tile) => {
+const revealTile = (tile, board) => {
   if (tile.status !== tile_dataStatus.hidden) {
     return;
   }
@@ -91,6 +91,26 @@ const revealTile = (tile) => {
   }
 
   tile.status = tile_dataStatus.number;
+  const adjacentTiles = nearbyTiles(board, tile);
+  const mines = adjacentTiles.filter((t) => t.mine);
+  if (mines.length === 0) {
+    adjacentTiles.forEach(revealTile.bind(null, board));
+  } else {
+    tile.element.textContent = mines.length;
+  }
+};
+
+const nearbyTiles = (board, { x, y }) => {
+  const tiles = [];
+
+  for (let xOffset = -1; xOffset <= 1; xOffset++) {
+    for (let yOffset = -1; yOffset <= 1; yOffset++) {
+      const tile = board[x + xOffset]?.[y + yOffset];
+      if (tile) tiles.push(tile);
+    }
+  }
+
+  return tiles;
 };
 
 const board = createBoard(board_Size, number_Of_Mines);
@@ -105,7 +125,7 @@ board.forEach((row) => {
 
     //클릭이벤트 적용
     tile.element.addEventListener("click", () => {
-      revealTile(tile);
+      revealTile(tile, board);
     });
     tile.element.addEventListener("contextmenu", (e) => {
       e.preventDefault();
