@@ -3,23 +3,53 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background-color: rgb(44, 44, 44);
 }
+
 .title {
   text-align: center;
   color: white;
   font-size: 40px;
 }
+
 .subtext {
   color: rgb(165, 165, 165);
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.board-container {
+  display: flex;
+  justify-content: center;
+}
+
 .board {
-  width: 15px;
-  height: 15px;
-  background-color: gray;
-  margin: 0 auto;
+  padding: 5px;
+  display: inline-grid;
+  grid-template-columns: repeat(var(--size), 1fr);
+  grid-template-rows: repeat(var(--size), 1fr);
+  gap: 5px;
+  background-color: #777;
+}
+
+.board > * {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+}
+
+.board > [data-status="hidden"] {
+  background-color: rgb(209, 209, 209);
+}
+.board > [data-status="mine"] {
+  background-color: crimson;
+}
+.board > [data-status="number"] {
+  background-color: none;
+}
+.board > [data-status="marked"] {
+  background-color: yellowgreen;
 }
