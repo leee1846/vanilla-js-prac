@@ -153,7 +153,11 @@ const listMinesLeft = () => {
 const checkWin = (board) => {};
 
 const checkLose = (board) => {
-  return true;
+  return board.some((row) => {
+    return row.some((tile) => {
+      return tile.status === tile_dataStatus.mine;
+    });
+  });
 };
 
 const stopProp = (e) => e.stopImmediatePropagation();
