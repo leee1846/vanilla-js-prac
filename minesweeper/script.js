@@ -97,9 +97,20 @@ board.forEach((row) => {
     tile.element.addEventListener("contextmenu", (e) => {
       e.preventDefault();
       markTile(tile);
+      listMinesLeft();
     });
   });
 });
 
 //상단 minesLeft값 적용
 minesLeftText.textContent = number_Of_Mines;
+
+const listMinesLeft = () => {
+  const markedTilesCount = board.reduce((acc, row) => {
+    return (
+      acc + row.filter((tile) => tile.status === tile_dataStatus.marked).length
+    );
+  }, 0);
+
+  minesLeftText.textContent = number_Of_Mines - markedTilesCount;
+};
