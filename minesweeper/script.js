@@ -1,5 +1,5 @@
-const board_Size = 10;
-const number_Of_Mines = 10;
+const board_Size = 2;
+const number_Of_Mines = 1;
 const tile_dataStatus = {
   hidden: "hidden",
   mine: "mine",
@@ -115,6 +115,7 @@ const nearbyTiles = (board, { x, y }) => {
 
 const board = createBoard(board_Size, number_Of_Mines);
 const boardElement = document.querySelector(".board");
+const messageText = document.querySelector(".subtext");
 const minesLeftText = document.querySelector("[mine-count]");
 boardElement.style.setProperty("--size", board_Size);
 
@@ -126,6 +127,7 @@ board.forEach((row) => {
     //클릭이벤트 적용
     tile.element.addEventListener("click", () => {
       revealTile(tile, board);
+      checkGameEnd();
     });
     tile.element.addEventListener("contextmenu", (e) => {
       e.preventDefault();
@@ -146,4 +148,29 @@ const listMinesLeft = () => {
   }, 0);
 
   minesLeftText.textContent = number_Of_Mines - markedTilesCount;
+};
+
+const checkWin = (board) => {};
+
+const checkLose = (board) => {
+  return true;
+};
+
+const stopProp = (e) => e.stopImmediatePropagation();
+
+const checkGameEnd = () => {
+  const win = checkWin(board);
+  const lose = checkLose(board);
+  if (win || lose) {
+    boardElement.addEventListener("click", stopProp, { capture: true });
+    boardElement.addEventListener("contextmenu", stopProp, { capture: true });
+  }
+
+  if (win) {
+    messageText.textContent = "You Win";
+  }
+
+  if (lose) {
+    messageText.textContent = "You Lose";
+  }
 };
