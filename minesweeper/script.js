@@ -172,5 +172,11 @@ const checkGameEnd = () => {
 
   if (lose) {
     messageText.textContent = "You Lose";
+    board.forEach((row) => {
+      row.forEach((tile) => {
+        if (tile.status === tile_dataStatus.marked) markTile(tile);
+        if (tile.mine) revealTile(tile, board);
+      });
+    });
   }
 };
