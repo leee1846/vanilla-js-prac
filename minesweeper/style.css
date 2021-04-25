@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(44, 44, 44);
+}
+.title {
+  text-align: center;
+  color: white;
+  font-size: 40px;
+}
+.subtext {
+  color: rgb(165, 165, 165);
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.board {
+  width: 15px;
+  height: 15px;
+  background-color: gray;
+  margin: 0 auto;
+}
